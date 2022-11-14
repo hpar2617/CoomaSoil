@@ -1,0 +1,74 @@
+---
+title: The Relationship Between Geochemical Soil Properties, Parent Rock & Major Geological Events and Processes
+author: "500494215"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document:
+    code_folding: hide 
+    toc: true 
+    toc_float: true
+    number_sections: true
+    df_print: kable
+    self_contained: true 
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message = FALSE)
+library(sf)
+library(mapview)
+library(tidyverse)
+library(RColorBrewer)
+
+```
+
+```{r include=FALSE}
+#Data loading + NA value defining 
+data= read_csv("Cooma_pXRF_data.csv", na=c('NO DATA','<LOD'))
+chem_data= data %>% select(1:14)
+#Drop NA values
+na_chem_data=drop_na(chem_data)
+#Jitter same coordinates for greater ease to view values in map
+data_jitter= data %>% 
+  st_as_sf(coords = c("Lng", "Lat"), crs = 4326) %>% 
+  st_jitter(factor = 0.02)
+```
+## Geological History of the Southern Tablelands
+- 500 words
+- Major events that produced and modified lithology + topography
+- use field trip + reading lit
+
+Plateau- 1000m above sea level, east coast is a drop- escarpment 
+mostly ancient highland, basaltic bedrock near cooma produce true chernozems in aus- fertile
+granitic- infertile and leached
+aureole 
+
+## Rock Geochemistry and Surface Geology
+- specific geochemical differences between rock types
+- VFT + reading- relate geochemical fingerprint of rock types to processes that formed them
+- 100 words
+
+## Soil Geochemistry and Soil Types
+- Geochemical differences between soil types? What are they?
+- rock samples + VFT. Explain why the geochemical fingerprints of soil types are different. 
+
+```{r}
+mapviewOptions(basemaps = c("OpenTopoMap", "Esri.WorldShadedRelief", "OpenStreetMap.DE", "CartoDB.Positron"))
+
+mapview(data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol ="Si",legend=TRUE)+ mapview(data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Al", at = seq(2, 14, 2), legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))
+
+```
+
+
+```{r}
+ggplot(data= na_chem_data, aes(x=Material, y=Al, fill=Location)) + geom_bar(stat = 'identity') + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+
+## References
+https://map-rfun.library.duke.edu/01_georeference.html 
+https://r-spatial.github.io/mapview/reference/mapView.html 
+https://rdrr.io/github/r-spatial/mapview/f/vignettes/articles/mapview_02-advanced.Rmd 
+
+http://www.regional.org.au/au/asssi/supersoil2004/s12/oral/1777_jenkinsb.htm 
+
+https://www.sciencedirect.com/science/article/pii/S1040618201000386 - landscape evolution, uplift, erosion
