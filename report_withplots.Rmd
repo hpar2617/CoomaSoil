@@ -2,7 +2,8 @@
 title: The Relationship Between Geochemical Soil Properties, Parent Rock & Major Geological Events and Processes
 author: "500494215"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document:
+output: 
+  html_document:
     code_folding: hide 
     toc: true 
     toc_float: true
@@ -15,7 +16,10 @@ output: html_document:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message = FALSE)
 library(sf)
+library(dplyr)
+library(raster)
 library(mapview)
+library(plainview)
 library(tidyverse)
 library(RColorBrewer)
 
@@ -24,44 +28,45 @@ library(RColorBrewer)
 ```{r include=FALSE}
 #Data loading + NA value defining 
 data= read_csv("Cooma_pXRF_data.csv", na=c('NO DATA','<LOD'))
-chem_data= data %>% select(1:14)
+chem_data= data %>% dplyr::select(1:14)
 #Drop NA values
 na_chem_data=drop_na(chem_data)
 #Jitter same coordinates for greater ease to view values in map
-data_jitter= data %>% 
+pxrf_data_jitter= data %>% 
   st_as_sf(coords = c("Lng", "Lat"), crs = 4326) %>% 
-  st_jitter(factor = 0.02)
+  st_jitter(factor = 0.001)
+#cec data
+r= raster("w001001.adf") 
+#asc data
+soil_types= st_read("Australian Soil Classification (ASC) Soil Type map of NSW.shp")
+#geological history data
+geo_hist=st_read("Rock Unit Pattern Fills.shp")
+
+
 ```
-## Geological History of the Southern Tablelands
-- 500 words
-- Major events that produced and modified lithology + topography
-- use field trip + reading lit
+# Geological History of the Southern Tablelands
 
-Plateau- 1000m above sea level, east coast is a drop- escarpment 
-mostly ancient highland, basaltic bedrock near cooma produce true chernozems in aus- fertile
-granitic- infertile and leached
-aureole 
+The Southern Tablelands are an expansive plateau, punctuated by plutonic outcrops. It is in the south-east of the Lachlan Fold Belt, which was formed in the Paleozoic era as a result of converging plates, which caused dynamic uplift (Dietmar et al., 2016). This continued to magnify with as Australia passed over a Pacific mantle upwelling. The landscape then sustained several deformations in the Late Ordovician for up to 70 Ma (Foster and Gray, 2000). These older intrusions and sediments are granodioritic. The major faults in Monaro have basalt plugs resulting from the erosion of volcanoes from the Eocene.The region remained active, with evidence of warping and tilting which post-dates the Eocene. 
+These plutonic intrusions, exhumed by erosion and uplift, were formed in the early Silurian to mid-Devonian (Hermann, N.D) from magma produced from the major fault identified by Richards (2002). These intrusions form granitic tors, which result from chemically and physically weather the grus surrounding the boulder. Fractured tors punctuate the landscape, created by diurnal temperature changes which are characteristic of weather in Cooma. Monthly mean minimum temperature have historically dip below 0°C quarter of the year, and can be as low as -11°C, but can be as high as 25°C. Tors can also further spall under thermal stress. 
+Metamorphic isograds are evident with increasing proximity from the heat of the granodioritic intrusions, forming the Cooma Metamorphic Complex. The aureoles of composed of hornfelsic metamorphosed rock, formed by the rock was in direct contact with the intruding magma. With increasing distance from the pluton, the lithology is composed of aureoles of migmatite, which has moderate to high metamorphism, representing the transition ‘from metamorphism to magmatism’ (Zou, 2013). This is a product of anatexis, shown by the partial melting of the rock. The Monaro region then shows aureoles of potassium feldspar, andalusite, biotite and chlorite lithology, with preserved ancient unmetamorphosed metasediments in north-east of Cooma. The outcome of the metamorphism, for example, andalusite, reveals the conditions to be low pressure and high temperature (Richards and Collins, 2002).
+Unmetamorhposed sedimentary rocks, dating to the Ordovician Period, present as lithified mudstone, sandstone and shale in Flysch deposits (Taylor and Roach, 2005). These accumulate in the accommodation spaces created by basins with the flexural isostasy of Gondwanan margin convergence and uplift of the Monaro Region. The bedrock which forms these sediments contains unweathered quartz veins, which has also been unaffected by the heat unlike the rocks in the Cooma Metamorphic Complex. Lower isograds of gneiss and schist form the sediment in this region. 
+South-west of Cooma, at Coolringdon, basaltic extrusions dating to the Eocene era differ to the majority of the other lithology, which was formed in the Paleozoic, whereas this is relatively newer, being formed in the Cenozoic. These rocks are more readily weathered as they are have smaller crystal structures which are less robust. However, due to their youth, the regolith is much thinner.
 
-## Rock Geochemistry and Surface Geology
-- specific geochemical differences between rock types
-- VFT + reading- relate geochemical fingerprint of rock types to processes that formed them
-- 100 words
+# Rock Geochemistry and Surface Geology
+Rock types are significantly distinct in terms of their geochemical fingerprint, and have been established in literature as having distinct trace element compositions as well as major mineral group variances (Tourtelot, 1971; Turekian and Wedepohl, 1961; Haldar and Tisljar, 2014). These are dictated by temperature and pressure conditions, as well as location of magma production. Felsic rocks are produced by magma at subduction zones (Taniuchi et al., 2020), whereas mafic rocks are produced by magma from hotspots. This is because felsic magma is more viscous and cannot reach the surface through hotspots unlike mafic magma. 
+Felsic magma produces rocks which are rich in silica whilst mafic magmas are not. They are more difficult to weather, and hence lower in the Bowen’s reaction series, whereas mafic minerals are low in resistant silicate bonds and weather more readily (Haldar and Tisljar, 2014). The Southern Tablelands are primarily composed of Cenozoic mafic volcanic rocks (Figure 1), which are composed of mostly gabbro or basalt from Eocene era volcanic activity. This was formed as a result of hotspots in the mantle, which effused mafic magma throughout the landscape. The Silurian I-type granite (Figure 1) which forms the epicenter from where metamorphism flourished, was formed intrusively during subduction when Australia was part of Gondwana. 
 
-## Soil Geochemistry and Soil Types
+
+# Soil Geochemistry and Soil Types
 - Geochemical differences between soil types? What are they?
 - rock samples + VFT. Explain why the geochemical fingerprints of soil types are different. 
 
 ```{r}
 mapviewOptions(basemaps = c("OpenTopoMap", "Esri.WorldShadedRelief", "OpenStreetMap.DE", "CartoDB.Positron"))
-
-mapview(data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol ="Si",legend=TRUE)+ mapview(data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Al", at = seq(2, 14, 2), legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))
+mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol ="Si",legend=TRUE)+ mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Al", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+mapview(r, hide=TRUE)+mapview(soil_types, zcol="ASC_order", legend=TRUE, col.regions=brewer.pal(9,"Dark2")) +mapview(geo_hist, zcol="Descriptio", hide=TRUE, legend=TRUE, col.regions=brewer.pal(9,"Set3"))
 
 ```
 
-
-```{r}
-ggplot(data= na_chem_data, aes(x=Material, y=Al, fill=Location)) + geom_bar(stat = 'identity') + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-```
 
 
 ## References
