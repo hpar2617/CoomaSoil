@@ -47,33 +47,69 @@ geo_hist=st_read("Rock Unit Pattern Fills.shp")
 # Geological History of the Southern Tablelands
 
 The Southern Tablelands are an expansive plateau, punctuated by plutonic outcrops. It is in the south-east of the Lachlan Fold Belt, which was formed in the Paleozoic era as a result of converging plates, which caused dynamic uplift (Dietmar et al., 2016). This continued to magnify with as Australia passed over a Pacific mantle upwelling. The landscape then sustained several deformations in the Late Ordovician for up to 70 Ma (Foster and Gray, 2000). These older intrusions and sediments are granodioritic. The major faults in Monaro have basalt plugs resulting from the erosion of volcanoes from the Eocene.The region remained active, with evidence of warping and tilting which post-dates the Eocene. 
+
 These plutonic intrusions, exhumed by erosion and uplift, were formed in the early Silurian to mid-Devonian (Hermann, N.D) from magma produced from the major fault identified by Richards (2002). These intrusions form granitic tors, which result from chemically and physically weather the grus surrounding the boulder. Fractured tors punctuate the landscape, created by diurnal temperature changes which are characteristic of weather in Cooma. Monthly mean minimum temperature have historically dip below 0°C quarter of the year, and can be as low as -11°C, but can be as high as 25°C. Tors can also further spall under thermal stress. 
+
 Metamorphic isograds are evident with increasing proximity from the heat of the granodioritic intrusions, forming the Cooma Metamorphic Complex. The aureoles of composed of hornfelsic metamorphosed rock, formed by the rock was in direct contact with the intruding magma. With increasing distance from the pluton, the lithology is composed of aureoles of migmatite, which has moderate to high metamorphism, representing the transition ‘from metamorphism to magmatism’ (Zou, 2013). This is a product of anatexis, shown by the partial melting of the rock. The Monaro region then shows aureoles of potassium feldspar, andalusite, biotite and chlorite lithology, with preserved ancient unmetamorphosed metasediments in north-east of Cooma. The outcome of the metamorphism, for example, andalusite, reveals the conditions to be low pressure and high temperature (Richards and Collins, 2002).
+
 Unmetamorhposed sedimentary rocks, dating to the Ordovician Period, present as lithified mudstone, sandstone and shale in Flysch deposits (Taylor and Roach, 2005). These accumulate in the accommodation spaces created by basins with the flexural isostasy of Gondwanan margin convergence and uplift of the Monaro Region. The bedrock which forms these sediments contains unweathered quartz veins, which has also been unaffected by the heat unlike the rocks in the Cooma Metamorphic Complex. Lower isograds of gneiss and schist form the sediment in this region. 
 South-west of Cooma, at Coolringdon, basaltic extrusions dating to the Eocene era differ to the majority of the other lithology, which was formed in the Paleozoic, whereas this is relatively newer, being formed in the Cenozoic. These rocks are more readily weathered as they are have smaller crystal structures which are less robust. However, due to their youth, the regolith is much thinner.
 
 # Rock Geochemistry and Surface Geology
 Rock types are significantly distinct in terms of their geochemical fingerprint, and have been established in literature as having distinct trace element compositions as well as major mineral group variances (Tourtelot, 1971; Turekian and Wedepohl, 1961; Haldar and Tisljar, 2014). These are dictated by temperature and pressure conditions, as well as location of magma production. Felsic rocks are produced by magma at subduction zones (Taniuchi et al., 2020), whereas mafic rocks are produced by magma from hotspots. This is because felsic magma is more viscous and cannot reach the surface through hotspots unlike mafic magma. 
+
 Felsic magma produces rocks which are rich in silica whilst mafic magmas are not. They are more difficult to weather, and hence lower in the Bowen’s reaction series, whereas mafic minerals are low in resistant silicate bonds and weather more readily (Haldar and Tisljar, 2014). The Southern Tablelands are primarily composed of Cenozoic mafic volcanic rocks (Figure 1), which are composed of mostly gabbro or basalt from Eocene era volcanic activity. This was formed as a result of hotspots in the mantle, which effused mafic magma throughout the landscape. The Silurian I-type granite (Figure 1) which forms the epicenter from where metamorphism flourished, was formed intrusively during subduction when Australia was part of Gondwana. 
 
 
 # Soil Geochemistry and Soil Types
-- Geochemical differences between soil types? What are they?
-- rock samples + VFT. Explain why the geochemical fingerprints of soil types are different. 
+The geochemical differences between soil types are significant as they originate from their lithology, which carries unique fingerprints based on type of magma (felsic or mafic), degree of metamorphism (dependent on proximity to the heat of the Cooma batholiths), and their tendency to weather into secondary minerals. 
+
+While trace elements ‘vary widely with rock type’, Tourtelot (1971) states that they are ‘quanititatively unimportant’, as soils deriving from different kinds of igneous rocks ‘do not differ from each other’. He places an emphasis on soils formed by sedimentary rocks, as they undergo precipitations in solution, which has important implications for weathering dynamics. Tourtelot seems to suggest an increase in sampling size if ‘results are to be usable for environmental studies’.Price and Taylor (1977) present rare earth element fingerprints of gneiss, granite, schistose biotite and migmatite which show fluctuating compositions between granites in different locations. 
+
+However, Turekian and Wedepohl (Table 2- distribution of the elements in the earth’s crust, 1961) produced a table which shows significant differences between granitic and basaltic rock, which is consistent with the difference in the elemental makeup of felsic and mafic magma. This is evident in the elements of titanium and nickel, which were also included in the pXRF data explored in Figure 1. There are also differences in terms of more abundant minerals such as silicon, aluminium, iron and phosphorus. These more perceptibly illustrate difference between soil types as they have implications on soil properties such as ease of weathering, clay content, cation exchange capacity (CEC) and general fertility. 
+
+Aluminium is seen in higher amounts on Cenozoic mafic soil deposits, which produced dermosols with high cation exchange capacity. The abundance of this mafic deposit in this region is visible at a broader scale, where the soil in the Southern Tablelands has higher CEC, which is reflected by the increase in aluminium concentrations. Increased silicon amounts are seen on granitic outcrops, which produce sandy, infertile tenosols with a low CEC. There are increased iron concentrations in the basaltic rocks which originate from mafic magma, which produce ferrosols have effective CEC. Phosphorus is greater in basaltic areas, as they have a tendency to weather into secondary clay minerals, which have an affinity for holding organic matter and minerals. Titanium is much higher in basaltic rocks, as is nickel, both of which are affected by CEC, whereas sandy, granitic soils have less of these elements. 
+
+All of the above generally reflect the table constructed by Turekian and Wedepohl (1961), but also align with Tourtelot’s statement, as rocks and their soils are not discrete and contained entities. They subject to mixing, warping and transportation, and are not formed in standardised ratios to begin with. In a generalised overview, the geological processes reflect upon the rock, which then impart their characteristics onto the soil they produce. 
+ 
 
 ```{r}
 mapviewOptions(basemaps = c("OpenTopoMap", "Esri.WorldShadedRelief", "OpenStreetMap.DE", "CartoDB.Positron"))
-mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol ="Si",legend=TRUE)+ mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Al", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+mapview(r, hide=TRUE)+mapview(soil_types, zcol="ASC_order", legend=TRUE, col.regions=brewer.pal(9,"Dark2")) +mapview(geo_hist, zcol="Descriptio", hide=TRUE, legend=TRUE, col.regions=brewer.pal(9,"Set3"))
+mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol ="Si",legend=TRUE, hide= TRUE)+ 
+  mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Al", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+
+  mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Fe", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+
+  mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "P", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+
+  mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Ti", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+
+  mapview(pxrf_data_jitter, xcol='Lng', ycol='Lat', crs = 4326, grid = FALSE, label= 'Material', zcol = "Ni", legend=TRUE, hide= TRUE, col.regions=brewer.pal(9, "YlOrRd"))+
+  mapview(r, hide=TRUE)+
+  mapview(soil_types, zcol="ASC_order", legend=TRUE, col.regions=brewer.pal(9,"Dark2")) +
+  mapview(geo_hist, zcol="Descriptio", hide=TRUE, legend=TRUE, col.regions=brewer.pal(9,"Set3"))
 
 ```
+Figure 1: Interactive map combining soil type data, geological history and soil property data from provided SEED data sources, as well as pXRF data which presents element concentrations.  
+
+Toggle the data layers shown, as well as the type of base map they are projected on using the Layers symbol below the '+' and '-' buttons. Please zoom in and hover/click to see more information about each point/polygon. Note that the points have been jittered to ensure values from the same coordinate all show. 
 
 
+# References
+Foster, D. A., & Gray, D. R. (2000). Evolution and structure of the Lachlan Fold Belt (orogen) of eastern Australia. Annual Review of Earth and Planetary Sciences, 28(1), 47–80. https://doi.org/10.1146/annurev.earth.28.1.47
 
-## References
-https://map-rfun.library.duke.edu/01_georeference.html 
-https://r-spatial.github.io/mapview/reference/mapView.html 
-https://rdrr.io/github/r-spatial/mapview/f/vignettes/articles/mapview_02-advanced.Rmd 
+Haldar, S. K., & Tišljar, J. (2014). Igneous rocks. Introduction to Mineralogy and Petrology, 93–120. https://doi.org/10.1016/b978-0-12-408133-8.00004-3
 
-http://www.regional.org.au/au/asssi/supersoil2004/s12/oral/1777_jenkinsb.htm 
+Hermann, n.d., The Cooma metamorphic sequence. Exploring Earth and Environmental Science. https://www.tesep.org.au/images/casestudy/TESEP_Case_Study_1.004-The_Cooma_metamorphic_sequence_.pdf
 
-https://www.sciencedirect.com/science/article/pii/S1040618201000386 - landscape evolution, uplift, erosion
+Muller, R. Dietmar., Flament, N., Matthews, K. J., Williams, S. E. & Gurnis, M. (2016). Formation of Australian continental margin highlands driven by plate-mantle interaction. Earth and Planetary Science Letters, 441 60-70.
+
+Richards, S.W., Collins, W.J., 2002. The Cooma Metamorphic Complex, a low-P, high-T (LPHT) regional aureole beneath the Murrumbidgee Batholith. Journal of Metamorphic Geology, 20(1): 119-134.
+
+Sinclair, H.D., Naylor, M., 2012. Foreland basin subsidence driven by topographic growth versus plate subduction. GSA Bulletin, 124(3-4): 368-379.
+
+Taniuchi, H., Kuritani, T., Yokoyama, T. et al. A new concept for the genesis of felsic magma: the separation of slab-derived supercritical liquid. Sci Rep 10, 8698 (2020). https://doi.org/10.1038/s41598-020-65641-6
+
+Taylor, Graham & Roach, Ian. (2005). Monaro Region, New South Wales.  In book: Regolith Landscape Evolution Across Australia (pp.90-95)
+
+Tourtelot, H. A. (1971). Chemical compositions of rock types as factors in our environment. Geological Society of America Memoirs, 13–18. https://doi.org/10.1130/mem123-p13
+
+Turekian, K. A., & Wedepohl, N. S. (1961). Distribution of the elements in some major units of the Earth's crust. Geological Society of America Bulletin, 72(2), 175. https://doi.org/10.1130/0016-7606(1961)72[175:doteis]2.0.co;2
+
+Zou, C. (2013). Oil and gas in metamorphic reservoirs. Unconventional Petroleum Geology, 275–305. https://doi.org/10.1016/b978-0-12-397162-3.00008-6
